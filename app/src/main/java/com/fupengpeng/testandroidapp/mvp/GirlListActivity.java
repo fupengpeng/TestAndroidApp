@@ -35,6 +35,10 @@ public class GirlListActivity extends AppCompatActivity implements IGirlView{
                 持有（实例化）Model的接口类型（实例化接口，使用接口的实现类接收）
 
             ocp开闭原则
+
+            内存泄漏：当Activity访问网络请求数据，获取数据之后，返回Activity时，Activity已然被回收
+                （在Activity页面点击返回键，或者跳转其他页面），此时访问已经被回收的内存就会出现内存泄漏
+
          */
 //        listView.setAdapter(new GirlAdapter(this));
         //中间者,让他触发加载数据
