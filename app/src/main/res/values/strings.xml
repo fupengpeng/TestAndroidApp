@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestAndroidApp</string>
+    <string name="one">一颗星</string>
+    <string name="two">二颗星</string>
+    <string name="three">三颗星</string>
+    <string name="four">四颗星</string>
+    <string name="five">五颗星</string>
+</resources>

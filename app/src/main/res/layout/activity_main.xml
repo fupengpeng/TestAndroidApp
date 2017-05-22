@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fupengpeng.testandroidapp.MainActivity">
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>。
+
+    <TextView
+
+
+        
+        android:inputType="number"
+        android:includeFontPadding="false"
+        android:imeOptions="actionNext"
+        android:imeActionLabel="@string/app_name"
+        android:hint="@string/app_name"
+        android:gravity="center"
+        android:freezesText="false"
+        android:fontFamily="cursive"
+        android:ellipsize="start"
+        android:editorExtras="@string/app_name"
+        android:editable="false"
+        android:drawableStart="@color/colorPrimary"
+        android:drawableBottom="@color/colorAccent"
+        android:digits="@string/app_name"
+        android:cursorVisible="false"
+        android:capitalize="characters"
+        android:bufferType="editable"
+        android:autoText="false"
+        android:autoLink="email"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.constraint.ConstraintLayout>
