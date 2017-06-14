@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -22,6 +23,7 @@ public class CameraActivity extends AppCompatActivity {
 
     public static final int REQ_1 = 1;
     public static final int REQ_2 = 2;
+    private static final String TAG = "CameraActivity";
     private ImageView mImageView;
     private String mFilePath;
     private FileInputStream fis;
@@ -49,9 +51,17 @@ public class CameraActivity extends AppCompatActivity {
         Uri photoUri = Uri.fromFile(new File(mFilePath));
         //对系统拍照存储路径更改为我们设定的存储路径
         intent.putExtra(MediaStore.EXTRA_OUTPUT,photoUri);
-
+        Log.e(TAG, "startCamera2: "+"点击跳转至相机拍照，并保存图片" );
         startActivityForResult(intent,REQ_2);
 
+    }
+
+    /**
+     * 调用自定义相机
+     * @param view
+     */
+    public void customCamera(View view){
+        startActivity(new Intent(this,CustomCamera.class));
     }
 
     @Override
@@ -66,9 +76,12 @@ public class CameraActivity extends AppCompatActivity {
             }else if (requestCode == REQ_2){
                 //到指定的路径下面去，获取图片，并设置
                 try {
+                    Log.e(TAG, "onActivityResult: "+"获取到拍照文件" );
                     fis = new FileInputStream(mFilePath);
+                    Log.e(TAG, "onActivityResult: "+"将流解析成bitmap" );
                     //将流解析成Bitmap
                     Bitmap bitmap = BitmapFactory.decodeStream(fis);
+                    Log.e(TAG, "onActivityResult: "+"设置图片" );
                     mImageView.setImageBitmap(bitmap);
 
                 } catch (FileNotFoundException e) {
