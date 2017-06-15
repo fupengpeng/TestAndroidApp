@@ -39,6 +39,14 @@ public class CustomCamera extends Activity implements SurfaceHolder.Callback{
         mHolder = mPreview.getHolder();
         mHolder.addCallback(this);
 
+        //点击屏幕，自动对焦
+        mPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCamera.autoFocus(null);
+            }
+        });
+
     }
     private Camera.PictureCallback mPictureCallback = new Camera.PictureCallback() {
         @Override

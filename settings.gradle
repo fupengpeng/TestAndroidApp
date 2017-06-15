@@ -1,1 +1,1 @@
-include ':app', ':cameraapp', ':shuffling', ':vaguequery', ':searchview', ':rank'
+include ':app', ':cameraapp', ':shuffling', ':vaguequery', ':searchview', ':rank', ':qrcode'

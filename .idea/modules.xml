@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/TestAndroidApp.iml" filepath="$PROJECT_DIR$/TestAndroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameraapp/cameraapp.iml" filepath="$PROJECT_DIR$/cameraapp/cameraapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qrcode/qrcode.iml" filepath="$PROJECT_DIR$/qrcode/qrcode.iml" />
       <module fileurl="file://$PROJECT_DIR$/rank/rank.iml" filepath="$PROJECT_DIR$/rank/rank.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchview/searchview.iml" filepath="$PROJECT_DIR$/searchview/searchview.iml" />
       <module fileurl="file://$PROJECT_DIR$/shuffling/shuffling.iml" filepath="$PROJECT_DIR$/shuffling/shuffling.iml" />
