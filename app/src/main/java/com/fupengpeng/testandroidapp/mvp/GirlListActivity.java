@@ -43,7 +43,7 @@ public class GirlListActivity extends AppCompatActivity implements IGirlView{
 //        listView.setAdapter(new GirlAdapter(this));
         //中间者,让他触发加载数据
 //        new GirlPresenterV1(this).fetch();
-        new GirlPresenterV2(this).fetch();
+        new GirlPresenterV1(this).fetch();
 //        new GirlPresenterV1(this).setmGirlModel(1);//加载model001的数据本地
 //        new GirlPresenterV1(this).setmGirlModel(2);//加载model002的数据网络
 
