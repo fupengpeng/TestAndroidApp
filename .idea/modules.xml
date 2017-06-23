@@ -15,7 +15,6 @@
       <module fileurl="file://$PROJECT_DIR$/selectall/selectall.iml" filepath="$PROJECT_DIR$/selectall/selectall.iml" />
       <module fileurl="file://$PROJECT_DIR$/shopcartselect/shopcartselect.iml" filepath="$PROJECT_DIR$/shopcartselect/shopcartselect.iml" />
       <module fileurl="file://$PROJECT_DIR$/shuffling/shuffling.iml" filepath="$PROJECT_DIR$/shuffling/shuffling.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vaguequery/vaguequery.iml" filepath="$PROJECT_DIR$/vaguequery/vaguequery.iml" />
     </modules>
   </component>
 </project>

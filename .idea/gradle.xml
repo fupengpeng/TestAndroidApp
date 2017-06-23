@@ -20,7 +20,6 @@
             <option value="$PROJECT_DIR$/selectall" />
             <option value="$PROJECT_DIR$/shopcartselect" />
             <option value="$PROJECT_DIR$/shuffling" />
-            <option value="$PROJECT_DIR$/vaguequery" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
