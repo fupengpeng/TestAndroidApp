@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_activity"/>
+    <LinearLayout
+        android:id="@+id/ll_activity_main_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45">
+
+        <LinearLayout
+            android:id="@+id/ll_activity_main_home"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_activity_main_home"
+                android:src="@drawable/nvshengtouxiang"
+                android:layout_width="match_parent"
+                android:layout_weight="0.6"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_activity_main_home"
+                android:gravity="center"
+                android:text="首页"
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                android:layout_height="0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_activity_main_classify"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_activity_main_classify"
+                android:src="@drawable/nvshengtouxiang"
+                android:layout_width="match_parent"
+                android:layout_weight="0.6"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_activity_main_classify"
+                android:gravity="center"
+                android:text="分类"
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                android:layout_height="0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_activity_main_share"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_activity_main_share"
+                android:src="@drawable/nvshengtouxiang"
+                android:layout_width="match_parent"
+                android:layout_weight="0.6"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_activity_main_share"
+                android:gravity="center"
+                android:text="分享"
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                android:layout_height="0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_activity_main_shopping_cart"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_activity_main_shopping_cart"
+                android:src="@drawable/nvshengtouxiang"
+                android:layout_width="match_parent"
+                android:layout_weight="0.6"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_activity_main_shopping_cart"
+                android:gravity="center"
+                android:text="购物车"
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                android:layout_height="0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_activity_main_person_center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_activity_main_person_center"
+                android:src="@drawable/nvshengtouxiang"
+                android:layout_width="match_parent"
+                android:layout_weight="0.6"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_activity_main_person_center"
+                android:gravity="center"
+                android:text="个人中心"
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                android:layout_height="0dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

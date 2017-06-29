@@ -1,7 +1,10 @@
-package com.fupengpeng.shopcartselect;
+package com.fupengpeng.shopcartselect.test;
 
 public class DataBean {
 
+	/**
+	 * 商品id
+	 */
 	int id;
 
 	int carNum;
@@ -11,6 +14,7 @@ public class DataBean {
 	String content;
 
 	double price;
+
 	boolean isChoose;
 
 	public boolean isChoose() {
