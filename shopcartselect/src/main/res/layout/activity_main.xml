@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/topbar_background"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,7 +39,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/subtitle"
+                android:id="@+id/tv_title_activity_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -61,7 +63,7 @@
         android:visibility="visible" >
 
         <CheckBox
-            android:id="@+id/check_box_all"
+            android:id="@+id/cb_fragment_shopping_cart_select_all"
             style="@style/mycheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +97,7 @@
                 android:textSize="@dimen/txt_14" />
 
             <TextView
-                android:id="@+id/tv_cart_total"
+                android:id="@+id/tv_fragment_shopping_cart_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tv_cart_Allprice"
@@ -135,8 +137,8 @@
             android:textSize="@dimen/txt_16"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tv_cart_buy_or_del"
+        <Button
+            android:id="@+id/btn_fragment_shopping_cart_settlement"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"

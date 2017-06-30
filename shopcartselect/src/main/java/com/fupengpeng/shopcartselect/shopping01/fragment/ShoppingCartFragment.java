@@ -22,7 +22,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fupengpeng.shopcartselect.R;
+import com.fupengpeng.shopcartselect.shopping01.entity.ShoppingCartData;
+import com.fupengpeng.shopcartselect.shopping01.entity.ShoppingCartFragmentEvent;
 import com.fupengpeng.shopcartselect.template.DataBean;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,11 +45,6 @@ public class ShoppingCartFragment extends Fragment
         implements View.OnClickListener
 {
 
-
-
-
-    @BindView(R.id.tv_title_activity_right)
-    TextView tvTitleActivityRight;
     /**
      * 购物车商品列表
      */
@@ -132,7 +133,7 @@ public class ShoppingCartFragment extends Fragment
         initListener();
         loadData();
         refreshListView();
-//        EventBus.getDefault().register(this);//订阅
+        EventBus.getDefault().register(this);//订阅
 
 
         return shoppingCartFragmentView;
@@ -142,14 +143,11 @@ public class ShoppingCartFragment extends Fragment
     private void initView() {
         Log.e(TAG, "initView: "+"----0001----" );
         // TODO: 2017/6/22 0022
-        tvTitleActivityRight.setVisibility(View.VISIBLE);
-        tvTitleActivityRight.setText("编辑");
         lvFragmentShoppingCart.setSelector(R.drawable.list_selector);
     }
 
     private void initListener() {
         Log.e(TAG, "initListener: "+"----0002----" );
-        tvTitleActivityRight.setOnClickListener(this);
         btnFragmentShoppingCartSettlement.setOnClickListener(this);
         cbFragmentShoppingCartSelectAll.setOnClickListener(this);
     }
@@ -158,7 +156,7 @@ public class ShoppingCartFragment extends Fragment
         Log.e(TAG, "loadData: "+"----0003----");
         mListData = getData();
 
-//        Log.e(TAG, "loadData:=======------------ "+isBatchModel );
+        Log.e(TAG, "loadData:=======------------ "+isBatchModel );
 //        ShoppingCartFragmentEvent shoppingCartFragmentEvent =
 //                new ShoppingCartFragmentEvent(
 //                        isBatchModel,
@@ -166,8 +164,10 @@ public class ShoppingCartFragment extends Fragment
 //                        llFragmentShoppingCartPriceTotal,
 //                        totalPrice,
 //                        tvFragmentShoppingCartTotal);
-//
-//        EventBus.getDefault().post(shoppingCartFragmentEvent);
+
+        ShoppingCartData shoppingCartData = new ShoppingCartData(isBatchModel);
+
+        EventBus.getDefault().post(shoppingCartData);
 
 //        EventBus.getDefault().postSticky(shoppingCartFragmentEvent);//发送一个粘性事件
 
@@ -210,6 +210,8 @@ public class ShoppingCartFragment extends Fragment
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        EventBus.getDefault().unregister(this);//解除订阅
+
     }
 
     @Override
@@ -217,31 +219,11 @@ public class ShoppingCartFragment extends Fragment
         // TODO Auto-generated method stub
         switch (v.getId()) {
 
-            case R.id.tv_title_activity_right:
-
-                Log.e(TAG, "onClick: "+"----0008----" );
-                isBatchModel = !isBatchModel;
-                if (isBatchModel) {
-                    tvTitleActivityRight.setText(getResources().getString(R.string.menu_enter));
-                    btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_del));
-                    llFragmentShoppingCartPriceTotal.setVisibility(View.GONE);
-
-                } else {
-                    tvTitleActivityRight.setText(getResources().getString(R.string.menu_edit));
-
-                    llFragmentShoppingCartPriceTotal.setVisibility(View.VISIBLE);
-                    btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_sett));
-                    totalPrice = 0;
-                    tvFragmentShoppingCartTotal.setText("￥" + totalPrice);
-
-                }
-
-                break;
 
             case R.id.cb_fragment_shopping_cart_select_all:
                 Log.e(TAG, "onClick: "+"----0009----" );
                 totalPrice = 0;
-
+                number = 0;
                 if (cbFragmentShoppingCartSelectAll.isChecked()) {
                     for (int i = 0; i < mListData.size(); i++) {
                         mListData.get(i).setChoose(true);
@@ -255,9 +237,14 @@ public class ShoppingCartFragment extends Fragment
 
                     // 刷新
                     shoppingCartFragmentAdapter.notifyDataSetChanged();
-                    btnFragmentShoppingCartSettlement.setText("去结算（"+number+")");
                     // 显示
                     tvFragmentShoppingCartTotal.setText(totalPrice + "元");
+                    if (isBatchModel){
+                        btnFragmentShoppingCartSettlement.setText("删除（"+number+"）");
+                    }else {
+                        btnFragmentShoppingCartSettlement.setText("结算（"+number+"）");
+                    }
+
                 } else {
                     for (int i = 0; i < mListData.size(); i++) {
                         mListData.get(i).setChoose(false);
@@ -266,17 +253,18 @@ public class ShoppingCartFragment extends Fragment
                         shoppingCartFragmentAdapter.notifyDataSetChanged();
                     }
                     tvFragmentShoppingCartTotal.setText(totalPrice + "元");
+
+                    if (isBatchModel){
+                        btnFragmentShoppingCartSettlement.setText("删除（"+number+"）");
+                    }else {
+                        btnFragmentShoppingCartSettlement.setText("结算（"+number+"）");
+                    }
                 }
                 break;
 
             case R.id.btn_fragment_shopping_cart_settlement:
 
                 Log.e(TAG, "onClick: "+"----0010----" );
-
-
-
-
-
 
                 if (isBatchModel) {
                     Log.e(TAG, "onClick: "+isBatchModel+"-----------------------" );
@@ -288,6 +276,7 @@ public class ShoppingCartFragment extends Fragment
                         if (g.isChoose()) {
                             // 从集合中删除上一次next方法返回的元素
                             it.remove();
+                            number();
                         }
                     }
 
@@ -312,11 +301,30 @@ public class ShoppingCartFragment extends Fragment
                 break;
         }
     }
-//    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
-//    public void onDataSynEvent(ShoppingCartFragmentEvent shoppingCartFragmentEvent) {
-//        isBatchModel = shoppingCartFragmentEvent.isBatchModel();
-//        Log.e(TAG, "onDataSynEvent: ============"+isBatchModel );
-//    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+    public void onDataSynEvent(ShoppingCartData shoppingCartData) {
+        Log.e(TAG, "event---->" + shoppingCartData.isBatchModel());
+        isBatchModel = isBatchModel;
+
+        Log.e(TAG, "onClick: "+"----0008----" );
+        isBatchModel = !isBatchModel;
+        if (isBatchModel) {
+            btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_del));
+            llFragmentShoppingCartPriceTotal.setVisibility(View.GONE);
+            number();
+
+        } else {
+
+            llFragmentShoppingCartPriceTotal.setVisibility(View.VISIBLE);
+            btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_sett));
+            count();
+
+        }
+    }
+
+
 
     class ShoppingCartFragmentAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
@@ -400,7 +408,12 @@ public class ShoppingCartFragment extends Fragment
                 } else {
                     shopcartEntity.setChoose(false);
                 }
-                count();
+                if (isBatchModel){
+                    number();
+                }else {
+                    count();
+                }
+
                 select();
 
             }
@@ -503,11 +516,18 @@ public class ShoppingCartFragment extends Fragment
             // 调整选定条目
             if (holder.cbItemFragmentShoppingCartCommodityListSelect.isChecked() == true) {
                 totalPrice += bean.getCarNum() * bean.getPrice();
+
+                number += bean.getCarNum();
+
             } else {
                 mSelectState.delete(position);
                 totalPrice -= bean.getCarNum() * bean.getPrice();
+                number += bean.getCarNum();
             }
+
             tvFragmentShoppingCartTotal.setText("￥" + totalPrice + "");
+
+            btnFragmentShoppingCartSettlement.setText("结算（"+number+"）");
             if (mSelectState.size() == mListData.size()) {
                 cbFragmentShoppingCartSelectAll.setChecked(true);
             } else {
@@ -550,53 +570,70 @@ public class ShoppingCartFragment extends Fragment
      * 计算价格
      */
     public void count() {
-        Log.e(TAG, "count: "+"----0012----" );
+
+        totalPrice = 0;// 人民币
+
+        number = 0;
+        if (mListData != null && mListData.size() > 0) {
+            for (int i = 0; i < mListData.size(); i++) {
+                if (mListData.get(i).isChoose()) {
+
+                    totalPrice = totalPrice + mListData.get(i).getCarNum()
+                            * mListData.get(i).getPrice();
+
+                    number = number + mListData.get(i).getCarNum();
+
+
+                }
+            }
+            tvFragmentShoppingCartTotal.setText("￥" + totalPrice + "");
+
+            btnFragmentShoppingCartSettlement.setText("结算（"+number+"）");
+
+        }
+
+    }
+
+    /**
+     * 计算数量
+     */
+    public void number() {
+
         totalPrice = 0;// 人民币
         number = 0;
         if (mListData != null && mListData.size() > 0) {
             for (int i = 0; i < mListData.size(); i++) {
                 if (mListData.get(i).isChoose()) {
 
-                    Log.e(TAG, "count: "+"----0012--前--"+ totalPrice );
-                    totalPrice =                              //商品合计价格
-                            totalPrice +                      //前面的总价
-                                    mListData.get(i).getCarNum()      //当前商品的数量
-                                            * mListData.get(i).getPrice();    //当前商品的价格
-                    Log.e(TAG, "count: "+"----0012--后--"+ totalPrice );
 
+                    totalPrice = totalPrice + mListData.get(i).getCarNum()
+                            * mListData.get(i).getPrice();
                     number = number + mListData.get(i).getCarNum();
-
-                    Log.e(TAG, "count: "+"----0012----number = "+ number);
-
 
                 }
             }
-            //设置显示当前选定商品合计价格
+
             tvFragmentShoppingCartTotal.setText("￥" + totalPrice + "");
 
-            btnFragmentShoppingCartSettlement.setText("去结算（"+ number +")");
-
-
+            btnFragmentShoppingCartSettlement.setText("删除（"+number+"）");
         }
 
     }
 
+
+
     public void select() {
-        Log.e(TAG, "select: "+"----0013----" );
-        int count = 0;                                         //商品数量
+        int count = 0;
         for (int i = 0; i < mListData.size(); i++) {
             if (mListData.get(i).isChoose()) {
                 count++;
-                Log.e(TAG, "select: "+"----0013----"+count );
             }
         }
-        if (count == mListData.size()) {                       //选定商品数量等于所有数据数量
-            Log.e(TAG, "select: "+"----0013--if==true--"+count );
-            cbFragmentShoppingCartSelectAll.setChecked(true);  //设置全选按钮为选定状态
+        if (count == mListData.size()) {
+            cbFragmentShoppingCartSelectAll.setChecked(true);
         } else {
-            isSelect = true;                                   //选定商品数量不等于所有数据数量
-            Log.e(TAG, "select: "+"----0013--if==false--"+count );
-            cbFragmentShoppingCartSelectAll.setChecked(false); //设置当前条目为选定状态，全选为未选定状态
+            isSelect = true;
+            cbFragmentShoppingCartSelectAll.setChecked(false);
         }
 
     }

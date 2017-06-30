@@ -4,10 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <include
-        layout="@layout/title_activity"/>
-
     <ListView
         android:id="@+id/lv_fragment_shopping_cart"
         android:layout_width="match_parent"

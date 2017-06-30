@@ -14,7 +14,13 @@ import android.widget.TextView;
 
 
 import com.fupengpeng.shopcartselect.R;
+import com.fupengpeng.shopcartselect.shopping01.entity.ShoppingCartData;
+import com.fupengpeng.shopcartselect.shopping01.entity.ShoppingCartFragmentEvent;
 import com.fupengpeng.shopcartselect.shopping01.fragment.ShoppingCartFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -126,11 +132,11 @@ public class ShoppingCartActivity extends AppCompatActivity {
     /**
      * 用于购物车编辑按钮的处理事件
      */
-    private boolean batchModel;
-    private Button btnFragmentShoppingCartSettlement;
-    private LinearLayout llFragmentShoppingCartPriceTotal;
-    private double totalPrice;
-    private TextView tvFragmentShoppingCartTotal;
+    private boolean isBatchModel;
+//    private Button btnFragmentShoppingCartSettlement;
+//    private LinearLayout llFragmentShoppingCartPriceTotal;
+//    private double totalPrice;
+//    private TextView tvFragmentShoppingCartTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +146,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
 
 
-//        EventBus.getDefault().register(this);//订阅
+        EventBus.getDefault().register(this);//订阅
 
 
     }
@@ -148,22 +154,29 @@ public class ShoppingCartActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//			EventBus.getDefault().unregister(this);//解除订阅
+			EventBus.getDefault().unregister(this);//解除订阅
 
     }
 
-//		@Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
-//		public void onDataSynEvent(ShoppingCartFragmentEvent shoppingCartFragmentEvent) {
-//			batchModel = shoppingCartFragmentEvent.isBatchModel();
-//			Log.e(TAG, "onDataSynEvent: ---------------------------------"+batchModel );
-//			btnFragmentShoppingCartSettlement = shoppingCartFragmentEvent.getBtnFragmentShoppingCartSettlement();
-//			llFragmentShoppingCartPriceTotal = shoppingCartFragmentEvent.getLlFragmentShoppingCartPriceTotal();
-//			totalPrice = shoppingCartFragmentEvent.getTotalPrice();
-//			tvFragmentShoppingCartTotal = shoppingCartFragmentEvent.getTvFragmentShoppingCartTotal();
-//			Log.e(TAG, "event---->" + shoppingCartFragmentEvent.getTotalPrice());
+//    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+//    public void onDataSynEvent(ShoppingCartFragmentEvent shoppingCartFragmentEvent) {
+//        batchModel = shoppingCartFragmentEvent.isBatchModel();
+//        Log.e(TAG, "onDataSynEvent: ---------------------------------"+batchModel );
+//        btnFragmentShoppingCartSettlement = shoppingCartFragmentEvent.getBtnFragmentShoppingCartSettlement();
+//        llFragmentShoppingCartPriceTotal = shoppingCartFragmentEvent.getLlFragmentShoppingCartPriceTotal();
+//        totalPrice = shoppingCartFragmentEvent.getTotalPrice();
+//        tvFragmentShoppingCartTotal = shoppingCartFragmentEvent.getTvFragmentShoppingCartTotal();
+//        Log.e(TAG, "event---->" + shoppingCartFragmentEvent.getTotalPrice());
 //
-//
-//		}
+//    }
+    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+    public void onDataSynEvent(ShoppingCartData shoppingCartData) {
+        isBatchModel = shoppingCartData.isBatchModel();
+        Log.e(TAG, "onDataSynEvent: ---------------------------------"+isBatchModel );
+
+
+
+    }
 
 
     @OnClick({R.id.ll_activity_main_home,
@@ -196,23 +209,25 @@ public class ShoppingCartActivity extends AppCompatActivity {
                 // TODO: 2017/6/29 0029  在购物车fragment展示时，此按钮的变化，及相关操作
 
                 Log.e(TAG, "onClick: " + "----0008----");
-                batchModel = !batchModel;
-                if (batchModel) {
+                isBatchModel = !isBatchModel;
+                if (isBatchModel) {
                     tvTitleActivityRight.setText(getResources().getString(R.string.menu_enter));
-                    btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_del));
-                    llFragmentShoppingCartPriceTotal.setVisibility(View.GONE);
+//                    btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_del));
+//                    llFragmentShoppingCartPriceTotal.setVisibility(View.GONE);
 
                 } else {
                     tvTitleActivityRight.setText(getResources().getString(R.string.menu_edit));
-
-                    llFragmentShoppingCartPriceTotal.setVisibility(View.VISIBLE);
-                    btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_sett));
-                    totalPrice = 0;
-                    tvFragmentShoppingCartTotal.setText("￥" + totalPrice);
+//
+//                    llFragmentShoppingCartPriceTotal.setVisibility(View.VISIBLE);
+//                    btnFragmentShoppingCartSettlement.setText(getResources().getString(R.string.menu_sett));
+//                    totalPrice = 0;
+//                    tvFragmentShoppingCartTotal.setText("￥" + totalPrice);
 
                 }
 
-                Log.e(TAG, "onViewClicked: "+batchModel+"=-=-=-=-=-=-=-=-=-" );
+                Log.e(TAG, "onViewClicked: "+isBatchModel+"=-=-=-=-=-=-=-=-=-" );
+                ShoppingCartData shoppingCartData = new ShoppingCartData(isBatchModel);
+                EventBus.getDefault().post(shoppingCartData);
 //                ShoppingCartFragmentEvent shoppingCartFragmentEvent =
 //                        new ShoppingCartFragmentEvent(
 //                                batchModel,
@@ -227,6 +242,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
 
 
     /**

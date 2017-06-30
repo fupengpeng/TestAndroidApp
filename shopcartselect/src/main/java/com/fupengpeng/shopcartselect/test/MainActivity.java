@@ -2,7 +2,6 @@ package com.fupengpeng.shopcartselect.test;
 
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
@@ -51,13 +50,17 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private TextView mFavorite; // 移到收藏夹,分享
 
-    private TextView mDelete; // 删除 结算
+    private Button mDelete; // 删除 结算
 
     private double totalPrice = 0; // 商品总价
+
+    private int totaNum = 0;
     /** 批量模式下，用来记录当前选中状态 */
     private SparseArray<Boolean> mSelectState = new SparseArray<Boolean>();
     private ImageView back;
     private boolean flag = true; // 全选或全取消
+
+    boolean isSelect = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +76,12 @@ public class MainActivity extends Activity implements OnClickListener {
         back = (ImageView) findViewById(R.id.back);
 
         mBottonLayout = (RelativeLayout) findViewById(R.id.cart_rl_allprie_total);
-        mCheckAll = (CheckBox) findViewById(R.id.check_box_all);
-        mEdit = (TextView) findViewById(R.id.subtitle);
-        mPriceAll = (TextView) findViewById(R.id.tv_cart_total);
+        mCheckAll = (CheckBox) findViewById(R.id.cb_fragment_shopping_cart_select_all);
+        mEdit = (TextView) findViewById(R.id.tv_title_activity_right);
+        mPriceAll = (TextView) findViewById(R.id.tv_fragment_shopping_cart_total);
         // mSelectNum = (TextView) findViewById(R.id.tv_cart_select_num);
         mFavorite = (TextView) findViewById(R.id.tv_cart_move_favorite);
-        mDelete = (TextView) findViewById(R.id.tv_cart_buy_or_del);
+        mDelete = (Button) findViewById(R.id.btn_fragment_shopping_cart_settlement);
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setSelector(R.drawable.list_selector);
 
@@ -92,7 +95,9 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     private void loadData() {
-        new LoadDataTask().execute(new Params(INITIALIZE));
+//        new LoadDataTask().execute(new Params(INITIALIZE));
+        mListData = getData();
+        refreshListView();
     }
 
     private void refreshListView() {
@@ -125,52 +130,52 @@ public class MainActivity extends Activity implements OnClickListener {
         return result;
     }
 
-    class Params {
-        int op;
+//    class Params {
+//        int op;
+//
+//        public Params(int op) {
+//            this.op = op;
+//        }
+//
+//    }
+//
+//    class Result {
+//        int op;
+//        List<DataBean> list;
+//    }
+//
+//    private class LoadDataTask extends AsyncTask<Params, Void, Result> {
+//        @Override
+//        protected Result doInBackground(Params... params) {
+//            Params p = params[0];
+//            Result result = new Result();
+//            result.op = p.op;
+//            try {// 模拟耗时
+//                Thread.sleep(500L);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            result.list = getData();
+//            return result;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Result result) {
+//            super.onPostExecute(result);
+//            if (result.op == INITIALIZE) {
+//                mListData = result.list;
+//            } else {
+//                mListData.addAll(result.list);
+//                Toast.makeText(getApplicationContext(), "添加成功！",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//
+//
+//        }
+//
+//    }
 
-        public Params(int op) {
-            this.op = op;
-        }
 
-    }
-
-    class Result {
-        int op;
-        List<DataBean> list;
-    }
-
-    private class LoadDataTask extends AsyncTask<Params, Void, Result> {
-        @Override
-        protected Result doInBackground(Params... params) {
-            Params p = params[0];
-            Result result = new Result();
-            result.op = p.op;
-            try {// 模拟耗时
-                Thread.sleep(500L);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            result.list = getData();
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Result result) {
-            super.onPostExecute(result);
-            if (result.op == INITIALIZE) {
-                mListData = result.list;
-            } else {
-                mListData.addAll(result.list);
-                Toast.makeText(getApplicationContext(), "添加成功！",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            refreshListView();
-        }
-
-    }
-
-    boolean isSelect = false;
 
     private class ListAdapter extends BaseAdapter implements
             OnItemClickListener {
@@ -200,15 +205,15 @@ public class MainActivity extends Activity implements OnClickListener {
                 holder = new ViewHolder();
                 view = LayoutInflater.from(MainActivity.this).inflate(
                         R.layout.cart_list_item, null);
-                holder.checkBox = (CheckBox) view.findViewById(R.id.check_box);
+                holder.checkBox = (CheckBox) view.findViewById(R.id.cb_item_fragment_shopping_cart_commodity_list_select);
                 // shopName = (TextView) view.findViewById(R.id.tv_source_name);
                 holder.image = (ImageView) view
                         .findViewById(R.id.iv_adapter_list_pic);
-                holder.content = (TextView) view.findViewById(R.id.tv_intro);
-                holder.carNum = (TextView) view.findViewById(R.id.tv_num);
-                holder.price = (TextView) view.findViewById(R.id.tv_price);
-                holder.add = (TextView) view.findViewById(R.id.tv_add);
-                holder.red = (TextView) view.findViewById(R.id.tv_reduce);
+                holder.content = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_name);
+                holder.carNum = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_number);
+                holder.price = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_price);
+                holder.add = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_number_add);
+                holder.red = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_number_reduce);
                 holder.button = (Button) view.findViewById(R.id.btn_delete);
                 holder.frontView = view.findViewById(R.id.item_left);
 
@@ -257,8 +262,15 @@ public class MainActivity extends Activity implements OnClickListener {
                 } else {
                     shopcartEntity.setChoose(false);
                 }
-                count();
+                if (isBatchModel){
+                    number();
+                }else {
+                    count();
+                }
+
                 select();
+
+
 
             }
 
@@ -356,11 +368,19 @@ public class MainActivity extends Activity implements OnClickListener {
             // 调整选定条目
             if (holder.checkBox.isChecked() == true) {
                 totalPrice += bean.getCarNum() * bean.getPrice();
+
+                totaNum += bean.getCarNum();
+
             } else {
                 mSelectState.delete(position);
                 totalPrice -= bean.getCarNum() * bean.getPrice();
+
+                totaNum += bean.getCarNum();
             }
             mPriceAll.setText("￥" + totalPrice + "");
+
+            mDelete.setText("结算（"+totaNum+"）");
+
             if (mSelectState.size() == mListData.size()) {
                 mCheckAll.setChecked(true);
             } else {
@@ -369,30 +389,32 @@ public class MainActivity extends Activity implements OnClickListener {
 
         }
 
+        class ViewHolder {
+            CheckBox checkBox;
+
+            ImageView image;
+            TextView shopName;
+            TextView content;
+            TextView carNum;
+            TextView price;
+            TextView add;
+            TextView red;
+            Button button; // 用于执行删除的button
+            View frontView;
+            LinearLayout item_right, item_left;
+
+        }
+
     }
 
-    class ViewHolder {
-        CheckBox checkBox;
 
-        ImageView image;
-        TextView shopName;
-        TextView content;
-        TextView carNum;
-        TextView price;
-        TextView add;
-        TextView red;
-        Button button; // 用于执行删除的button
-        View frontView;
-        LinearLayout item_right, item_left;
-
-    }
 
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
 
-            case R.id.subtitle:
+            case R.id.tv_title_activity_right:
                 isBatchModel = !isBatchModel;
                 if (isBatchModel) {
                     mEdit.setText(getResources().getString(R.string.menu_enter));
@@ -400,20 +422,24 @@ public class MainActivity extends Activity implements OnClickListener {
                     mBottonLayout.setVisibility(View.GONE);
                     mFavorite.setVisibility(View.VISIBLE);
 
+                    number();
+
                 } else {
                     mEdit.setText(getResources().getString(R.string.menu_edit));
 
                     mFavorite.setVisibility(View.GONE);
                     mBottonLayout.setVisibility(View.VISIBLE);
                     mDelete.setText(getResources().getString(R.string.menu_sett));
-                    totalPrice=0;
-                    mPriceAll.setText("￥"+totalPrice);;
+                    count();
+
                 }
 
                 break;
 
-            case R.id.check_box_all:
+            case R.id.cb_fragment_shopping_cart_select_all:
                 totalPrice = 0;
+
+                totaNum = 0;
                 if (mCheckAll.isChecked()) {
                     for (int i = 0; i < mListData.size(); i++) {
                         mListData.get(i).setChoose(true);
@@ -421,6 +447,9 @@ public class MainActivity extends Activity implements OnClickListener {
                         if (mListData.get(i).isChoose()) {
                             totalPrice = totalPrice + mListData.get(i).getCarNum()
                                     * mListData.get(i).getPrice();
+
+                            totaNum = totaNum + mListData.get(i).getCarNum();
+
                         }
                     }
 
@@ -428,6 +457,13 @@ public class MainActivity extends Activity implements OnClickListener {
                     mListAdapter.notifyDataSetChanged();
                     // 显示
                     mPriceAll.setText(totalPrice + "元");
+
+
+                    if (isBatchModel){
+                        mDelete.setText("删除（"+totaNum+"）");
+                    }else {
+                        mDelete.setText("结算（"+totaNum+"）");
+                    }
                 } else {
                     for (int i = 0; i < mListData.size(); i++) {
                         mListData.get(i).setChoose(false);
@@ -436,10 +472,16 @@ public class MainActivity extends Activity implements OnClickListener {
                         mListAdapter.notifyDataSetChanged();
                     }
                     mPriceAll.setText(totalPrice + "元");
+
+                    if (isBatchModel){
+                        mDelete.setText("删除（"+totaNum+"）");
+                    }else {
+                        mDelete.setText("结算（"+totaNum+"）");
+                    }
                 }
                 break;
 
-            case R.id.tv_cart_buy_or_del:
+            case R.id.btn_fragment_shopping_cart_settlement:
 
                 if (isBatchModel) {
 
@@ -451,6 +493,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         if (g.isChoose()) {
                             // 从集合中删除上一次next方法返回的元素
                             it.remove();
+                            number();
                         }
                     }
 
@@ -488,6 +531,8 @@ public class MainActivity extends Activity implements OnClickListener {
     public void count() {
 
         totalPrice = 0;// 人民币
+
+        totaNum = 0;
         if (mListData != null && mListData.size() > 0) {
             for (int i = 0; i < mListData.size(); i++) {
                 if (mListData.get(i).isChoose()) {
@@ -495,12 +540,46 @@ public class MainActivity extends Activity implements OnClickListener {
                     totalPrice = totalPrice + mListData.get(i).getCarNum()
                             * mListData.get(i).getPrice();
 
+                    totaNum = totaNum + mListData.get(i).getCarNum();
+
+
                 }
             }
             mPriceAll.setText("￥" + totalPrice + "");
+
+            mDelete.setText("结算（"+totaNum+"）");
+
         }
 
     }
+
+    /**
+     * 计算数量
+     */
+    public void number() {
+
+        totalPrice = 0;// 人民币
+        totaNum = 0;
+        if (mListData != null && mListData.size() > 0) {
+            for (int i = 0; i < mListData.size(); i++) {
+                if (mListData.get(i).isChoose()) {
+
+
+                    totalPrice = totalPrice + mListData.get(i).getCarNum()
+                            * mListData.get(i).getPrice();
+                    totaNum = totaNum + mListData.get(i).getCarNum();
+
+                }
+            }
+
+            mPriceAll.setText("￥" + totalPrice + "");
+
+            mDelete.setText("删除（"+totaNum+"）");
+        }
+
+    }
+
+
 
     public void select() {
         int count = 0;

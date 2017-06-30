@@ -72,12 +72,12 @@ public class MainActivity extends Activity implements OnClickListener {
         back = (ImageView) findViewById(R.id.back);
 
         mBottonLayout = (RelativeLayout) findViewById(R.id.cart_rl_allprie_total);
-        mCheckAll = (CheckBox) findViewById(R.id.check_box_all);
-        mEdit = (TextView) findViewById(R.id.subtitle);
-        mPriceAll = (TextView) findViewById(R.id.tv_cart_total);
+        mCheckAll = (CheckBox) findViewById(R.id.cb_fragment_shopping_cart_select_all);
+        mEdit = (TextView) findViewById(R.id.tv_title_activity_right);
+        mPriceAll = (TextView) findViewById(R.id.tv_fragment_shopping_cart_total);
         // mSelectNum = (TextView) findViewById(R.id.tv_cart_select_num);
         mFavorite = (TextView) findViewById(R.id.tv_cart_move_favorite);
-        mDelete = (TextView) findViewById(R.id.tv_cart_buy_or_del);
+        mDelete = (TextView) findViewById(R.id.btn_fragment_shopping_cart_settlement);
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setSelector(R.drawable.list_selector);
 
@@ -199,15 +199,15 @@ public class MainActivity extends Activity implements OnClickListener {
                 holder = new ViewHolder();
                 view = LayoutInflater.from(MainActivity.this).inflate(
                         R.layout.cart_list_item, null);
-                holder.checkBox = (CheckBox) view.findViewById(R.id.check_box);
+                holder.checkBox = (CheckBox) view.findViewById(R.id.cb_item_fragment_shopping_cart_commodity_list_select);
                 // shopName = (TextView) view.findViewById(R.id.tv_source_name);
                 holder.image = (ImageView) view
                         .findViewById(R.id.iv_adapter_list_pic);
-                holder.content = (TextView) view.findViewById(R.id.tv_intro);
-                holder.carNum = (TextView) view.findViewById(R.id.tv_num);
-                holder.price = (TextView) view.findViewById(R.id.tv_price);
-                holder.add = (TextView) view.findViewById(R.id.tv_add);
-                holder.red = (TextView) view.findViewById(R.id.tv_reduce);
+                holder.content = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_name);
+                holder.carNum = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_number);
+                holder.price = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_price);
+                holder.add = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_number_add);
+                holder.red = (TextView) view.findViewById(R.id.tv_item_fragment_shopping_cart_commodity_list_number_reduce);
                 holder.button = (Button) view.findViewById(R.id.btn_delete);
                 holder.frontView = view.findViewById(R.id.item_left);
 
@@ -391,7 +391,7 @@ public class MainActivity extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         switch (v.getId()) {
 
-            case R.id.subtitle:
+            case R.id.tv_title_activity_right:
                 isBatchModel = !isBatchModel;
                 if (isBatchModel) {
                     mEdit.setText(getResources().getString(R.string.menu_enter));
@@ -411,7 +411,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
                 break;
 
-            case R.id.check_box_all:
+            case R.id.cb_fragment_shopping_cart_select_all:
                 totalPrice = 0;
                 if (mCheckAll.isChecked()) {
                     for (int i = 0; i < mListData.size(); i++) {
@@ -438,7 +438,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
                 break;
 
-            case R.id.tv_cart_buy_or_del:
+            case R.id.btn_fragment_shopping_cart_settlement:
 
                 if (isBatchModel) {
 
