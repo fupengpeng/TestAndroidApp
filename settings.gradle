@@ -1,1 +1,1 @@
-include ':app', ':cameraapp', ':shuffling', ':searchview', ':rank', ':qrcode', ':baidumap', ':amap', ':housekeeper', ':selectall', ':shopcartselect', ':lock'
+include ':app', ':cameraapp', ':shuffling', ':searchview', ':rank', ':qrcode', ':baidumap', ':amap', ':housekeeper', ':selectall', ':shopcartselect', ':lock', ':meituandemo', ':tabhost'

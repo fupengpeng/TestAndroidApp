@@ -14,12 +14,14 @@
             <option value="$PROJECT_DIR$/cameraapp" />
             <option value="$PROJECT_DIR$/housekeeper" />
             <option value="$PROJECT_DIR$/lock" />
+            <option value="$PROJECT_DIR$/meituandemo" />
             <option value="$PROJECT_DIR$/qrcode" />
             <option value="$PROJECT_DIR$/rank" />
             <option value="$PROJECT_DIR$/searchview" />
             <option value="$PROJECT_DIR$/selectall" />
             <option value="$PROJECT_DIR$/shopcartselect" />
             <option value="$PROJECT_DIR$/shuffling" />
+            <option value="$PROJECT_DIR$/tabhost" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
