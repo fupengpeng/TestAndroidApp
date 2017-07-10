@@ -10,8 +10,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/amap" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/appservice" />
             <option value="$PROJECT_DIR$/baidumap" />
             <option value="$PROJECT_DIR$/cameraapp" />
+            <option value="$PROJECT_DIR$/carousel" />
             <option value="$PROJECT_DIR$/housekeeper" />
             <option value="$PROJECT_DIR$/lock" />
             <option value="$PROJECT_DIR$/meituandemo" />

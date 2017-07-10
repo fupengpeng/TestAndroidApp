@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:text="账号："
+            android:gravity="center"
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:id="@+id/et_activity_app_service_account"
+            android:hint="请输入账号"
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="45dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:text="密码："
+            android:gravity="center"
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:id="@+id/et_activity_app_service_password"
+            android:hint="请输入密码"
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="45dp" />
+    </LinearLayout>
+
+
+   <Button
+       android:layout_margin="10dp"
+       android:id="@+id/btn_activity_app_service_button"
+       android:text="点击进行网络请求"
+       android:layout_width="match_parent"
+       android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/tv_activity_app_service_account_password"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:text="请求的账号密码展示"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <TextView
+        android:id="@+id/tv_activity_app_service_title"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:text="请求成功后在下方展示数据"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <TextView
+        android:id="@+id/tv_activity_app_service_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:background="#ff55aa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/TestAndroidApp.iml" filepath="$PROJECT_DIR$/TestAndroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/amap/amap.iml" filepath="$PROJECT_DIR$/amap/amap.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appservice/appservice.iml" filepath="$PROJECT_DIR$/appservice/appservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/baidumap/baidumap.iml" filepath="$PROJECT_DIR$/baidumap/baidumap.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameraapp/cameraapp.iml" filepath="$PROJECT_DIR$/cameraapp/cameraapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/carousel/carousel.iml" filepath="$PROJECT_DIR$/carousel/carousel.iml" />
       <module fileurl="file://$PROJECT_DIR$/housekeeper/housekeeper.iml" filepath="$PROJECT_DIR$/housekeeper/housekeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/lock/lock.iml" filepath="$PROJECT_DIR$/lock/lock.iml" />
       <module fileurl="file://$PROJECT_DIR$/meituandemo/meituandemo.iml" filepath="$PROJECT_DIR$/meituandemo/meituandemo.iml" />
