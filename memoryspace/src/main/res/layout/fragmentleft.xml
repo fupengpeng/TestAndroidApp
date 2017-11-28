@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_weight="0.7"
+        android:layout_margin="@dimen/dp_15"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0">
+        <ImageView
+            android:layout_margin="@dimen/dp_15"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60" />
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_margin="@dimen/dp_15"
+            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center|left"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:text="工作中"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0" />
+            <TextView
+                android:gravity="center|left"
+                android:layout_weight="0.5"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_gravity="center"
+                android:text="工作中"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0" />
+        </LinearLayout>
+        <TextView
+            android:layout_margin="@dimen/dp_15"
+            android:layout_gravity="center"
+            android:text="工作中"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_margin="@dimen/dp_15"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30" />
+    </LinearLayout>
+    <View
+        android:background="#d9d9d9"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_2"/>
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_margin="@dimen/dp_15"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0">
+        <TextView
+            android:gravity="center|left"
+            android:text="克里木临工"
+            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent" />
+        <TextView
+            android:gravity="center"
+            android:text="切换"
+            android:layout_weight="0.1"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <View
+        android:background="#d9d9d9"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_2"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp_15"
+        android:layout_weight="0.9"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0">
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_15"
+            android:orientation="horizontal"
+            android:layout_weight="0.4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="0.1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent">
+                <TextView
+                    android:gravity="center"
+                    android:text="8685.0"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0" />
+                <TextView
+                    android:gravity="center"
+                    android:text="营业额"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="0.1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0" >
+                    <TextView
+                        android:gravity="center"
+                        android:text="28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:gravity="center"
+                        android:text="/"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:gravity="center"
+                        android:text="20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+                <TextView
+                    android:gravity="center"
+                    android:text="单量/客量"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="0.1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent">
+                <TextView
+                    android:gravity="center"
+                    android:text="8"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0" />
+                <TextView
+                    android:gravity="center"
+                    android:text="新增会员"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0">
+            <TextView
+                android:gravity="center|left"
+                android:text="业绩分析"
+                android:layout_weight="1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0">
+            <TextView
+                android:gravity="center|left"
+                android:text="业绩分析"
+                android:layout_weight="1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_margin="@dimen/dp_15"
+    android:layout_weight="0.5"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_0">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_15"
+        android:orientation="horizontal"
+        android:layout_weight="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0">
+        <TextView
+            android:gravity="center|left"
+            android:text="业绩分析"
+            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0">
+        <TextView
+            android:gravity="center|left"
+            android:text="业绩分析"
+            android:layout_weight="1"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30" />
+    </LinearLayout>
+</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp_15"
+        android:layout_weight="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_15"
+            android:orientation="horizontal"
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0">
+            <TextView
+                android:gravity="center|left"
+                android:text="业绩分析"
+                android:layout_weight="1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0">
+            <TextView
+                android:gravity="center|left"
+                android:text="业绩分析"
+                android:layout_weight="1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30" />
+        </LinearLayout>
+
+    </LinearLayout>
+<View
+    android:layout_weight="0.1"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_0"/>
+</LinearLayout>

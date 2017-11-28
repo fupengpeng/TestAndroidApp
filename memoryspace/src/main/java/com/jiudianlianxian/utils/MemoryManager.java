@@ -32,6 +32,8 @@ import com.jiudianlianxian.memoryspace.MainActivity;
 public class MemoryManager {
 	public static final String TAG = "--MemoryManager------------";
 	static DecimalFormat dFormat = new DecimalFormat("#.00");
+	private static File absoluteFile;
+	private static String absolutePath;
 
 	/**
 	 * 内存大小格式化
@@ -56,6 +58,9 @@ public class MemoryManager {
 	public static long getSelfMemory(boolean isAvailabl) {
 		// 拿到内置存储的自身内存文件
 		File file = Environment.getDataDirectory();
+		absoluteFile = file.getAbsoluteFile();
+		absolutePath = file.getAbsolutePath();
+
 		// //用于计算内存大小 path 文件路径
 		// StatFs statf=new StatFs(file.getAbsolutePath());
 		// //拿到内存块的数量
@@ -234,7 +239,7 @@ public class MemoryManager {
 	}
 
 	//获取总运存大小
-	public static String  getOperationMemory(Context context){
+	public static String   getOperationMemory(Context context){
 		String str1 = "/proc/meminfo";// 系统内存信息文件
 		String str2;
 		String[] arrayOfString;
@@ -277,6 +282,16 @@ public class MemoryManager {
 		sb.append("  TIME: "+ Build.TIME);
 		sb.append("  builder类型：" + Build.TYPE);
 		sb.append("  USER: "+ Build.USER);
+        sb.append("  设备SDK版本 " + Build.VERSION.SDK);
+        sb.append("  设备的系统版本 " + Build.VERSION.RELEASE);
+        sb.append("--"+Build.VERSION.BASE_OS+"--");
+        sb.append("--"+Build.VERSION.CODENAME+"--");
+        sb.append("--"+Build.VERSION.INCREMENTAL+"--");
+        sb.append("--"+Build.VERSION.SECURITY_PATCH+"--");
+        sb.append("--"+Build.VERSION.PREVIEW_SDK_INT+"--");
+        sb.append("--"+Build.VERSION.SDK_INT+"--");
+        sb.append("--"+Build.VERSION_CODES.BASE+"--");
+
 		return sb.toString();
 	}
 
