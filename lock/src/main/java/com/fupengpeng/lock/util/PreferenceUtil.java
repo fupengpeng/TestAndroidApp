@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by zhuanghongji on 2015/11/15.
+ * @description  密码保存
+ * @author  fupengpeng
+ * @date  2018/3/19 0019 14:13
  */
 public class PreferenceUtil {
     public static String getGesturePassword(Context context) {

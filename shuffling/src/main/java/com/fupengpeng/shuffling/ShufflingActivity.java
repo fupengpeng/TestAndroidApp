@@ -80,8 +80,8 @@ public class ShufflingActivity extends AppCompatActivity {
         // 有多少张图加载多少个小点
         for (int i = 0; i < datas.size(); i++) {
             ImageView pointIv = new ImageView(this);
-            pointIv.setPadding(5,5,5,5);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,20);
+            pointIv.setPadding(5, 5, 5, 5);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
             pointIv.setLayoutParams(params);
 
             // 设置第0页小点的为灰色

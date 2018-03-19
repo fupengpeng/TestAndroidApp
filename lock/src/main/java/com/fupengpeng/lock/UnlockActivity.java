@@ -20,7 +20,7 @@ public class UnlockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
-        Log.e(TAG, "onCreate: "+"002" );
+        Log.e(TAG, "onCreate: " + "002");
 
         mLockPatternView = (LockPatternView) findViewById(R.id.lockView);
 
@@ -35,14 +35,14 @@ public class UnlockActivity extends AppCompatActivity {
             @Override
             public boolean isPassword() {
                 if (mPasswordStr.equals(password)) {
-                    Log.e(TAG, "isPassword: "+"密码正确" );
+                    Log.e(TAG, "isPassword: " + "密码正确");
                     Toast.makeText(UnlockActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(UnlockActivity.this, MainActivity.class);
                     startActivity(intent);
                     UnlockActivity.this.finish();
 //                    return true;
                 } else {
-                    Log.e(TAG, "isPassword: "+"密码不正确" );
+                    Log.e(TAG, "isPassword: " + "密码不正确");
                     Toast.makeText(UnlockActivity.this, "密码不正确", Toast.LENGTH_SHORT).show();
                 }
                 return false;

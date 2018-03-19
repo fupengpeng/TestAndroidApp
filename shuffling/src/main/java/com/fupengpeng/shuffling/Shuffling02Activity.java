@@ -18,7 +18,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by fp on 2017/6/11.
+ * @description  轮播实现
+ * @author  fupengpeng
+ * @date  2018/3/19 0019 14:10
  */
 
 public class Shuffling02Activity extends AppCompatActivity {
@@ -38,7 +40,7 @@ public class Shuffling02Activity extends AppCompatActivity {
             R.drawable.nvshengtouxiang24
     };
     //存放图片的标题
-    private String[]  titles = new String[]{
+    private String[] titles = new String[]{
             "巩俐不低俗，我就不能低俗",
             "扑树又回来啦！再唱经典老歌引万人大合唱",
             "揭秘北京电影如何升级",
@@ -57,7 +59,7 @@ public class Shuffling02Activity extends AppCompatActivity {
 
         //显示的图片
         images = new ArrayList<ImageView>();
-        for(int i = 0; i < imageIds.length; i++){
+        for (int i = 0; i < imageIds.length; i++) {
             ImageView imageView = new ImageView(this);
             imageView.setBackgroundResource(imageIds[i]);
             images.add(imageView);
@@ -103,8 +105,8 @@ public class Shuffling02Activity extends AppCompatActivity {
 
     /**
      * 自定义Adapter
-     * @author liuyazhuang
      *
+     * @author liuyazhuang
      */
     private class ViewPagerAdapter extends PagerAdapter {
 
@@ -161,10 +163,10 @@ public class Shuffling02Activity extends AppCompatActivity {
 
     /**
      * 图片轮播任务
-     * @author liuyazhuang
      *
+     * @author liuyazhuang
      */
-    private class ViewPageTask implements Runnable{
+    private class ViewPageTask implements Runnable {
 
         @Override
         public void run() {
@@ -176,16 +178,19 @@ public class Shuffling02Activity extends AppCompatActivity {
     /**
      * 接收子线程传递过来的数据
      */
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             mViewPaper.setCurrentItem(currentItem);
-        };
+        }
+
+        ;
     };
+
     @Override
     protected void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
-        if(scheduledExecutorService != null){
+        if (scheduledExecutorService != null) {
             scheduledExecutorService.shutdown();
             scheduledExecutorService = null;
         }

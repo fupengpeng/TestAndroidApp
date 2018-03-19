@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 引导界面point色值 -->
+    <color name="green_point">#59c138</color>
+    <color name="gray_point">#acc1c5</color>
+    
+    <!-- 内存储色值 -->
+    <color name="bottle_green">#4abd36</color>
+    <!-- 外存储色值 -->
+    <color name="navy_blue">#51a9ea</color>
+    
+    <!-- 常用色值 -->
+    <color name="red">#ff0000</color>
+    <color name="write">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="green">#00ff00</color>
+    <color name="blue">#0000ff</color>
+    <color name="gray">#ededed</color>
+    
+    <color name="darkgray">#b8c2db</color>
+    
+    <color name="nattierblue">#16c1d6</color>
+    
+    <!-- 分割线 -->
+    <color name="dev_line">#ece9d8</color>
+    <!-- 手机检测分割线 -->
+    <color name="dev_line_phone">#aca899</color>
+    <!-- 一键清理 -->
+    <color name="baby_blue">#009acd</color>
+    
+    <color name="dark_yellow">#ffbb33</color>
+    <color name="dark_red">#e83333</color>
+    <color name="dark_green">#66cc33</color>
+    
+    
+</resources>

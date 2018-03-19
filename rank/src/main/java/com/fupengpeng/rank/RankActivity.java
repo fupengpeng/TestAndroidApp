@@ -33,14 +33,14 @@ public class RankActivity extends AppCompatActivity {
         list.add(b3);
         list.add(b4);
         list.add(b5);
-// Collections.sort(list); //没有默认比较器，不能排序
+        Collections.sort(list); //没有默认比较器，不能排序
         System.out.println("数组序列中的元素:");
         myprint(list);
         Collections.sort(list, new PriceComparator()); // 根据价格排序
         System.out.println("按书的价格排序:");
         myprint(list);
         Collections.sort(list, new CalendarComparator()); // 根据时间排序
-//把顺序颠倒下
+        //把顺序颠倒下
         Collections.reverse(list);
         System.out.println("按书的出版时间排序:");
         myprint(list);

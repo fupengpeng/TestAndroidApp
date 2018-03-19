@@ -18,9 +18,9 @@ public class SetLockActivity extends AppCompatActivity {
 
     private TextView mTitleTv;
     private LockPatternView mLockPatternView;
-//    private LinearLayout mBottomLayout;
+    //    private LinearLayout mBottomLayout;
     private Button mClearBtn;
-//    private Button mConfirmBtn;
+    //    private Button mConfirmBtn;
 
     private String mPassword;
     /**
@@ -33,7 +33,7 @@ public class SetLockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_lock);
 
-        Log.e(TAG, "onCreate: "+"003" );
+        Log.e(TAG, "onCreate: " + "003");
         initViews();
         initEvents();
     }
@@ -43,7 +43,7 @@ public class SetLockActivity extends AppCompatActivity {
             @Override
             public void getStringPassword(String password) {
                 if (isFirst) {
-                    Log.e(TAG, "getStringPassword: "+"设置锁屏密码" );
+                    Log.e(TAG, "getStringPassword: " + "设置锁屏密码");
                     mPassword = password;
                     mTitleTv.setText("再次输入手势密码");
                     isFirst = false;
@@ -52,12 +52,12 @@ public class SetLockActivity extends AppCompatActivity {
                     if (password.equals(mPassword)) {
                         setPasswordToPreference(password);
                         startActivity(new Intent(SetLockActivity.this, MainActivity.class));
-                        Log.e(TAG, "getStringPassword: "+"密码设置成功" );
+                        Log.e(TAG, "getStringPassword: " + "密码设置成功");
                         SetLockActivity.this.finish();
-                    }else {
-                        Toast.makeText(SetLockActivity.this,"两次密码不一致，请重新设置",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(SetLockActivity.this, "两次密码不一致，请重新设置", Toast.LENGTH_SHORT).show();
                         mPassword = "";
-                        Log.e(TAG, "getStringPassword: "+"密码设置失败重新设置密码" );
+                        Log.e(TAG, "getStringPassword: " + "密码设置失败重新设置密码");
                         mTitleTv.setText("设置手势密码");
                         isFirst = false;
                         mClearBtn.setVisibility(View.GONE);

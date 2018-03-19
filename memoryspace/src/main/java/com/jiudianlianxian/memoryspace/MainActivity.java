@@ -30,15 +30,11 @@ import butterknife.OnClick;
 
 
 /**
- * @Title: MainActivity
+ * @class_name: MainActivity
  * @Description: 描述
- * @Company: 山东九点连线信息技术有限公司
  * @ProjectName: com.jiudianlianxian.memoryspace
  * @author fupengpeng
- * @date 2017/11/28 0028 8:48
- * ---27
- * 1--MainActivity
- * 2--
+ * @date 2017/11/29 0029 9:32
  */
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "--MainActivity--";

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Spinner</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string-array name="citys">
+        <item>北京</item>
+        <item>上海</item>
+        <item>广州</item>
+        <item>深圳</item>
+        <item>珠海</item>
+        <item>湖州</item>
+    </string-array>
+
+    <string name="tv">TextView</string>
+</resources>
